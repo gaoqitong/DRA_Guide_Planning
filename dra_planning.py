@@ -136,8 +136,8 @@ class Prod_Planning(object):
     
     def get_next_ltl(self, current_rabin):
         # input 'current_rabin' is with type int
-        current_rabin = str(current_rabin)
-        current_idx = np.where(np.array(self.opt_rabin) == np.int(current_rabin))[0][0]
+        # current_rabin = str(current_rabin)
+        current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
         next_rabin = str(self.opt_rabin[current_idx+1])
         ltl_list = [i["label"][1:] for i in self.env.rabin.graph[current_rabin][next_rabin].values()]
         next_ltl = ")||<>(".join(ltl_list)
