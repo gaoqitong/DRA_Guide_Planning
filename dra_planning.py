@@ -60,9 +60,9 @@ class Prod_Planning(object):
 #         print "last_extra: ", last_coord_dict_extra
 #         print "new_extra: ", new_coord_dict_extra
         for k,v in last_coord_dict_extra:
-            print "k",k
+            # print "k",k
             for i in v:
-                print "i",i
+                # print "i",i
                 self.region_list[np.ravel_multi_index(k, (10,10))].app.remove(i.lower())
                 self.region_list[np.ravel_multi_index(k, (10,10))].ap.remove(i.lower())
 
