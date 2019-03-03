@@ -53,6 +53,31 @@ class Prod_Planning(object):
         self.region_list = region_list
         self.wfts = wfts
         self.opt_path = []
+
+    def replace_region_list(self):
+        env = self.env
+        region_list = ["r"+str(i) for i in range(100)]
+        for i in range(len(region_list)):
+            coord = np.unravel_index(i, (env.shape[0],env.shape[1]))
+            if len(env.dynamic_coord_dict[coord]) >0:
+                region_list[i] = Region(coord, [ap.lower() for ap in env.dynamic_coord_dict[coord]], region_list[i])
+            else:
+                region_list[i] = Region(coord, [], region_list[i])
+                
+        wfts = wFTS(set(), {}, set())
+        for i in region_list:
+            wfts.add_states(i)
+
+        for i in region_list:
+            current_coord = list(i.coord)
+            candidates = [np.array(current_coord), np.add(current_coord,[0,1]), np.add(current_coord,[0,-1]), 
+                          np.add(current_coord,[1,0]), np.add(current_coord,[-1,0])]
+            candidates = [np.ravel_multi_index(c, env.shape[:-1]) for c in candidates if c[0]>=0 and c[1]>=0 and c[0]<env.shape[0] and c[1]<env.shape[1]]
+            for c in candidates:
+                wfts.add_transition(i, region_list[c], 1)
+
+        wfts.add_initial(region_list[np.ravel_multi_index(env.start_coord, env.shape[:-1])])
+        self.region_list = region_list
         
     def update_wfts_ap(self):
         last_coord_dict_extra = set((k,tuple(v)) for k,v in self.env.last_dynamic_coord_dict.items()) - set((k,tuple(v)) for k,v in self.env.dynamic_coord_dict.items())
