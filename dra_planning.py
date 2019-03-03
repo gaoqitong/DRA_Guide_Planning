@@ -76,7 +76,7 @@ class Prod_Planning(object):
             for c in candidates:
                 wfts.add_transition(i, region_list[c], 1)
 
-        wfts.add_initial(region_list[np.ravel_multi_index(env.start_coord, env.shape[:-1])])
+        wfts.replace_initial(region_list[np.ravel_multi_index(env.start_coord, env.shape[:-1])])
         self.region_list = region_list
         
     def update_wfts_ap(self):
@@ -144,7 +144,7 @@ class Prod_Planning(object):
         next_ltl = "<>(" + next_ltl + ")"
         return next_ltl
     
-    def get_local_opt(self, new_start_coord, new_ltl):
+    def get_local_opt(self, new_start_coord, new_ltl, dra_full_prod=None):
         opt_local_path = []
 
         rabin = Rabin_Automaton(new_ltl, env.dynamic_coord_dict)
