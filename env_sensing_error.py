@@ -166,13 +166,17 @@ class CurrentWorld(discrete.DiscreteEnv):
         self.rabin = Rabin_Automaton(new_ltl, self.dynamic_coord_dict)
 
     def update_coord_dict(self):
-        ap_dict_static_extra = set((k,tuple(v)) for k,v in self.ap_dict_static.items()) - set((k,tuple(v)) for k,v in self.ap_dict.items())
-        ap_dict_extra = set((k,tuple(v)) for k,v in self.ap_dict.items()) - set((k,tuple(v)) for k,v in self.ap_dict_static.items())
+        
+        # ap_dict_static_extra = set((k,tuple(v)) for k,v in self.ap_dict_static.items()) - set((k,tuple(v)) for k,v in self.ap_dict.items())
+        # ap_dict_extra = set((k,tuple(v)) for k,v in self.ap_dict.items()) - set((k,tuple(v)) for k,v in self.ap_dict_static.items())
+
+        last_ap_dict_extra = set((k,tuple(v)) for k,v in self.last_ap_dict.items()) - set((k,tuple(v)) for k,v in self.ap_dict.items())
+        ap_dict_extra = set((k,tuple(v)) for k,v in self.ap_dict.items()) - set((k,tuple(v)) for k,v in self.last_ap_dict.items())
 
         self.last_dynamic_coord_dict = deepcopy(self.dynamic_coord_dict)
-        self.dynamic_coord_dict = deepcopy(self.static_coord_dict)
+        self.dynamic_coord_dict = deepcopy(self.last_dynamic_coord_dict)
 
-        for k,v in ap_dict_static_extra:
+        for k,v in last_ap_dict_extra:
             for i in v:
                 self.dynamic_coord_dict[i].remove(k)
 
