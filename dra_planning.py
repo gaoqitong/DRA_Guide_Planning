@@ -122,8 +122,8 @@ class Prod_Planning(object):
     def get_local_opt(self, new_start_coord, new_ltl):
         opt_local_path = []
 
-        rabin = Rabin_Automaton(new_ltl, env.dynamic_coord_dict)
-        self.wfts.replace_initial(self.region_list[np.ravel_multi_index(new_start_coord, env.shape[:-1])])
+        rabin = Rabin_Automaton(new_ltl, self.env.dynamic_coord_dict)
+        self.wfts.replace_initial(self.region_list[np.ravel_multi_index(new_start_coord, self.env.shape[:-1])])
         
         full_prod = FullProd(self.wfts, rabin)
         full_prod.construct_fullproduct()
