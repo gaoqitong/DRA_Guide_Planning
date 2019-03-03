@@ -1,0 +1,7 @@
+| Reward: 61 | Episode: 0 | Qmax: 0.0 | Exploration: 0.6993 | Step: 39 | LearningRate: 0.00147
+| Reward: -1 | Episode: 1 | Qmax: 22.606512674010627 | Exploration: 0.6986007 | Step: 101 | LearningRate: 0.0014406
+| Reward: -90 | Episode: 2 | Qmax: 36.506853575455516 | Exploration: 0.6979020993 | Step: 190 | LearningRate: 0.0014117882
+| Reward: -1069 | Episode: 3 | Qmax: 37.777104329614176 | Exploration: 0.697204197201 | Step: 1169 | LearningRate: 0.0014117882
+| Reward: -58 | Episode: 4 | Qmax: 36.34152478809598 | Exploration: 0.696506993003 | Step: 158 | LearningRate: 0.0013835524
+| Reward: 56 | Episode: 5 | Qmax: 33.36256165937944 | Exploration: 0.69581048601 | Step: 44 | LearningRate: 0.0013558815
+| Reward: 52 | Episode: 6 | Qmax: 33.90208705266317 | Exploration: 0.695114675524 | Step: 48 | LearningRate: 0.0013287639
