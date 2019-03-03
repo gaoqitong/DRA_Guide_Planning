@@ -82,11 +82,11 @@ class Prod_Planning(object):
         full_prod = FullProd(self.wfts, rabin)
         self.full_prod = full_prod
         full_prod.construct_fullproduct()
-        count = 0
-        for i in full_prod.states:
-            for j in full_prod.transition[i].keys():
-                if full_prod.transition[i][j] is not None:
-                    count += 1 
+        # count = 0
+        # for i in full_prod.states:
+        #     for j in full_prod.transition[i].keys():
+        #         if full_prod.transition[i][j] is not None:
+        #             count += 1 
                     
         # while len(opt_path) == 0:
         try:
@@ -127,11 +127,11 @@ class Prod_Planning(object):
         
         full_prod = FullProd(self.wfts, rabin)
         full_prod.construct_fullproduct()
-        count = 0
-        for i in full_prod.states:
-            for j in full_prod.transition[i].keys():
-                if full_prod.transition[i][j] is not None:
-                    count += 1 
+        # count = 0
+        # for i in full_prod.states:
+        #     for j in full_prod.transition[i].keys():
+        #         if full_prod.transition[i][j] is not None:
+        #             count += 1 
                     
         # while len(opt_local_path) == 0:
         try:
