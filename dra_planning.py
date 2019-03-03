@@ -139,7 +139,7 @@ class Prod_Planning(object):
         # current_rabin = str(current_rabin)
         current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
         next_rabin = str(self.opt_rabin[current_idx+1])
-        ltl_list = [i["label"][1:] for i in self.env.rabin.graph[current_rabin][next_rabin].values()]
+        ltl_list = [i["label"][1:] for i in self.env.rabin.graph[str(current_rabin)][next_rabin].values()]
         next_ltl = ")||<>(".join(ltl_list)
         next_ltl = "<>(" + next_ltl + ")"
         return next_ltl
@@ -150,8 +150,10 @@ class Prod_Planning(object):
         rabin = Rabin_Automaton(new_ltl, env.dynamic_coord_dict)
         self.wfts.replace_initial(self.region_list[np.ravel_multi_index(new_start_coord, env.shape[:-1])])
         
-        full_prod = FullProd(self.wfts, rabin)
-        full_prod.construct_fullproduct()
+        if dra_full_prod == None:
+            dra_full_prod = FullProd(self.wfts, rabin)
+            dra_full_prod.construct_fullproduct()
+            self.dra_full_prod = dra_full_prod
         # count = 0
         # for i in full_prod.states:
         #     for j in full_prod.transition[i].keys():
@@ -160,7 +162,7 @@ class Prod_Planning(object):
                     
         # while len(opt_local_path) == 0:
         try:
-            opt=search_opt_run(full_prod)
+            opt=search_opt_run(dra_full_prod)
             opt_local_path = [tuple(list(opt[0][i][0].coord) + [opt[0][i][1]]) for i in range(len(opt[0]))]
             return opt_local_path
         except:
