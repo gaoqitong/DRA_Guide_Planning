@@ -52,6 +52,7 @@ class Prod_Planning(object):
         
         self.region_list = region_list
         self.wfts = wfts
+        self.opt_path = []
         
     def update_wfts_ap(self):
         last_coord_dict_extra = set((k,tuple(v)) for k,v in self.env.last_dynamic_coord_dict.items()) - set((k,tuple(v)) for k,v in self.env.dynamic_coord_dict.items())
@@ -87,13 +88,14 @@ class Prod_Planning(object):
                 if full_prod.transition[i][j] is not None:
                     count += 1 
                     
-        while len(opt_path) == 0:
-            try:
-                opt=search_opt_run(full_prod)
-                opt_path = [tuple(list(opt[0][i][0].coord) + [opt[0][i][1]]) for i in range(len(opt[0]))]
-            except:
-                pass
-        self.opt_path = opt_path
+        # while len(opt_path) == 0:
+        try:
+            opt=search_opt_run(full_prod)
+            opt_path = [tuple(list(opt[0][i][0].coord) + [opt[0][i][1]]) for i in range(len(opt[0]))]
+            self.opt_path = opt_path
+        except:
+            pass
+        
         # print 'Plan synthesized:'+str(opt_path)
 #         return self.opt_path, self.region_list, self.wfts
 
@@ -131,12 +133,13 @@ class Prod_Planning(object):
                 if full_prod.transition[i][j] is not None:
                     count += 1 
                     
-        while len(opt_local_path) == 0:
-            try:
-                opt=search_opt_run(full_prod)
-                opt_local_path = [tuple(list(opt[0][i][0].coord) + [opt[0][i][1]]) for i in range(len(opt[0]))]
-            except:
-                pass
+        # while len(opt_local_path) == 0:
+        try:
+            opt=search_opt_run(full_prod)
+            opt_local_path = [tuple(list(opt[0][i][0].coord) + [opt[0][i][1]]) for i in range(len(opt[0]))]
+            return opt_local_path
+        except:
+            return None
         # print 'Local Plan synthesized:'+str(opt_local_path)
-        return opt_local_path
+        
     
