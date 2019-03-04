@@ -29,7 +29,7 @@ class Prod_Planning(object):
         self.ltl = ltl
         self.env = env
         
-        self.region_list = ["r"+str(i) for i in range(100)]
+        self.region_list = ["r"+str(i) for i in range(self.env.shape[0]*self.env.shape[1])]
         for i in range(len(self.region_list)):
             coord = np.unravel_index(i, (self.env.shape[0],self.env.shape[1]))
             if len(self.env.dynamic_coord_dict[coord]) >0:
@@ -55,7 +55,7 @@ class Prod_Planning(object):
         self.opt_path = []
 
     def replace_region_list(self):
-        self.region_list = ["r"+str(i) for i in range(100)]
+        self.region_list = ["r"+str(i) for i in range(self.env.shape[0]*self.env.shape[1])]
         for i in range(len(self.region_list)):
             coord = np.unravel_index(i, (self.env.shape[0],self.env.shape[1]))
             if len(self.env.dynamic_coord_dict[coord]) >0:
@@ -79,15 +79,15 @@ class Prod_Planning(object):
                 # print "i",i
                 # self.region_list[np.ravel_multi_index(k, (10,10))].app.remove(i.lower())
                 # self.region_list[np.ravel_multi_index(k, (10,10))].ap.remove(i.lower())
-                self.region_list[np.ravel_multi_index(k, (10,10))].app.remove(i)
-                self.region_list[np.ravel_multi_index(k, (10,10))].ap.remove(i)
+                self.region_list[np.ravel_multi_index(k, (self.env.shape[0],self.env.shape[1]))].app.remove(i)
+                self.region_list[np.ravel_multi_index(k, (self.env.shape[0],self.env.shape[1]))].ap.remove(i)
 
         for k,v in new_coord_dict_extra:
             for i in v:
                 # self.region_list[np.ravel_multi_index(k, (10,10))].app += [i.lower()]
                 # self.region_list[np.ravel_multi_index(k, (10,10))].ap += [i.lower()]
-                self.region_list[np.ravel_multi_index(k, (10,10))].app += [i]
-                self.region_list[np.ravel_multi_index(k, (10,10))].ap += [i]
+                self.region_list[np.ravel_multi_index(k, (self.env.shape[0],self.env.shape[1]))].app += [i]
+                self.region_list[np.ravel_multi_index(k, (self.env.shape[0],self.env.shape[1]))].ap += [i]
     
     def get_global_opt(self):
         opt_path = []
@@ -133,10 +133,10 @@ class Prod_Planning(object):
 #         print "opt_rabin: ", self.opt_rabin
 #         print "Current_Rabin: ", current_rabin
         current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
-        if current_idx < len(self.opt_rabin):
+        if current_idx < len(self.opt_rabin)-1:
             next_rabin = str(self.opt_rabin[current_idx+1])
         else:
-            next_rabin = str(self.opt_rabin[current_idx])
+            next_rabin = str(self.opt_rabin[-1])
         ltl_list = [i["label"][1:] for i in self.env.rabin.graph[str(current_rabin)][next_rabin].values()]
         next_ltl = ")||<>(".join(ltl_list)
         next_ltl = "<>(" + next_ltl + ")"

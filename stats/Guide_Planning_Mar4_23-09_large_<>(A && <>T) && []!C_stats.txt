@@ -1,0 +1,13 @@
+| Reward: -5000 | Episode: 0 | Qmax: 10.572265735847916 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5000 | Episode: 1 | Qmax: 5.345464963951187 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5180 | Episode: 2 | Qmax: -0.22889356764373117 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5000 | Episode: 3 | Qmax: -3.3448836614708144 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5540 | Episode: 4 | Qmax: -5.389828153984819 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5000 | Episode: 5 | Qmax: -7.406753981041765 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5090 | Episode: 6 | Qmax: -9.279733501120894 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5270 | Episode: 7 | Qmax: -10.535540272573192 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5360 | Episode: 8 | Qmax: -10.05845708311918 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -7250 | Episode: 9 | Qmax: -11.240868232054318 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5720 | Episode: 10 | Qmax: -12.815425655884829 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5720 | Episode: 11 | Qmax: -14.531277303944131 | Exploration: 0.2 | Step: 499 | LR:1e-05
+| Reward: -5090 | Episode: 12 | Qmax: -15.944199342288092 | Exploration: 0.2 | Step: 499 | LR:1e-05

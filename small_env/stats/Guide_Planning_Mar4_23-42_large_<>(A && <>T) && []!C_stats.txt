@@ -1,0 +1,1 @@
+| Reward: -2900 | Episode: 0 | Qmax: -2.177837055756818 | Exploration: 0.2 | Step: 199 | LR:0.0015

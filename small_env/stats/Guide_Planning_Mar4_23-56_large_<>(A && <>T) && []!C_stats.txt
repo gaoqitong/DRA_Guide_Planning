@@ -1,0 +1,4 @@
+| Reward: -2630 | Episode: 0 | Qmax: 0.18810963495891897 | Exploration: 0.2 | Step: 199 | LR:0.0015
+| Reward: -3260 | Episode: 1 | Qmax: -2.0612374322498264 | Exploration: 0.2 | Step: 199 | LR:0.0015
+| Reward: -2810 | Episode: 2 | Qmax: -3.752947091232592 | Exploration: 0.2 | Step: 199 | LR:0.0015
+| Reward: -3350 | Episode: 3 | Qmax: 4.332197404986051 | Exploration: 0.2 | Step: 199 | LR:0.0015
