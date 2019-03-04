@@ -145,7 +145,7 @@ class Prod_Planning(object):
         # input 'current_rabin' is with type int
         # current_rabin = str(current_rabin)
         current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
-        if current_idx < len(opt_rabin):
+        if current_idx < len(self.opt_rabin):
             next_rabin = str(self.opt_rabin[current_idx+1])
         else:
             next_rabin = str(self.opt_rabin[current_idx])
