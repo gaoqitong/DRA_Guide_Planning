@@ -129,7 +129,7 @@ class CurrentWorld(discrete.DiscreteEnv):
                 
         #ltl = ltl + " && <>[] T"
         
-        self.rabin = Rabin_Automaton(ltl, self.static_coord_dict)
+        self.rabin = Rabin_Automaton(ltl, self.dynamic_coord_dict)
         self.shape = (self.shape[0], self.shape[1], self.rabin.num_of_nodes)
         
         nS = np.prod(self.shape)

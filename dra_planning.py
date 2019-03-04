@@ -25,14 +25,16 @@ def convert_path_to_action(path):
 
 class Prod_Planning(object):
     def __init__(self, env, ltl):
-        self.ltl = ltl.lower()
+        # self.ltl = ltl.lower()
+        self.ltl = ltl
         self.env = env
         
         region_list = ["r"+str(i) for i in range(100)]
         for i in range(len(region_list)):
             coord = np.unravel_index(i, (env.shape[0],env.shape[1]))
             if len(env.dynamic_coord_dict[coord]) >0:
-                region_list[i] = Region(coord, [ap.lower() for ap in env.dynamic_coord_dict[coord]], region_list[i])
+                # region_list[i] = Region(coord, [ap.lower() for ap in env.dynamic_coord_dict[coord]], region_list[i])
+                region_list[i] = Region(coord, [ap for ap in env.dynamic_coord_dict[coord]], region_list[i])
             else:
                 region_list[i] = Region(coord, [], region_list[i])
                 
@@ -60,7 +62,8 @@ class Prod_Planning(object):
         for i in range(len(region_list)):
             coord = np.unravel_index(i, (env.shape[0],env.shape[1]))
             if len(env.dynamic_coord_dict[coord]) >0:
-                region_list[i] = Region(coord, [ap.lower() for ap in env.dynamic_coord_dict[coord]], region_list[i])
+                region_list[i] = Region(coord, [ap for ap in env.dynamic_coord_dict[coord]], region_list[i])
+                # region_list[i] = Region(coord, [ap.lower() for ap in env.dynamic_coord_dict[coord]], region_list[i])
             else:
                 region_list[i] = Region(coord, [], region_list[i])
                 
@@ -88,13 +91,17 @@ class Prod_Planning(object):
             # print "k",k
             for i in v:
                 # print "i",i
-                self.region_list[np.ravel_multi_index(k, (10,10))].app.remove(i.lower())
-                self.region_list[np.ravel_multi_index(k, (10,10))].ap.remove(i.lower())
+                # self.region_list[np.ravel_multi_index(k, (10,10))].app.remove(i.lower())
+                # self.region_list[np.ravel_multi_index(k, (10,10))].ap.remove(i.lower())
+                self.region_list[np.ravel_multi_index(k, (10,10))].app.remove(i)
+                self.region_list[np.ravel_multi_index(k, (10,10))].ap.remove(i)
 
         for k,v in new_coord_dict_extra:
             for i in v:
-                self.region_list[np.ravel_multi_index(k, (10,10))].app += [i.lower()]
-                self.region_list[np.ravel_multi_index(k, (10,10))].ap += [i.lower()]
+                # self.region_list[np.ravel_multi_index(k, (10,10))].app += [i.lower()]
+                # self.region_list[np.ravel_multi_index(k, (10,10))].ap += [i.lower()]
+                self.region_list[np.ravel_multi_index(k, (10,10))].app += [i]
+                self.region_list[np.ravel_multi_index(k, (10,10))].ap += [i]
     
     def get_global_opt(self):
         opt_path = []
