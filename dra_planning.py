@@ -130,6 +130,8 @@ class Prod_Planning(object):
     def get_next_ltl(self, current_rabin):
         # input 'current_rabin' is with type int
         # current_rabin = str(current_rabin)
+        print "opt_rabin: ", self.opt_rabin
+        print "Current_Rabin: ", current_rabin
         current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
         if current_idx < len(opt_rabin):
             next_rabin = str(self.opt_rabin[current_idx+1])
