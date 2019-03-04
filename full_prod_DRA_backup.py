@@ -65,44 +65,27 @@ class Region(object):
         return self.name
 
 class wFTS(object):
-
-    def _add_transition(self,state1,state2,w=0,symmetric=True):
-        if state1 not in self.transition.keys():
-            self.transition[state1] = {}
-        if state2 not in self.transition.keys():
-            self.transition[state2] = {}
-        self.transition[state1][state2] = w
-        if symmetric == True:
-            self.transition[state2][state1] = w
-
-
-    def __init__(self, region_list, env, transition={}, initial=set()):
+    def __init__(self, states=set(), transition={}, initial=set()):
         # trans_relat is a matrix stores control words
         ## i.e. trans_relat[2][4] 
         # weight is a matrix stores transition cost if reachable, otherwise +infty
         ## i.e. trans_relat[4][9] represents the weight when travel from region 5 to region 10
-        self.states = region_list
+        self.states = states
         # states stores Region objects
         self.transition = transition
         self.initial = initial
-        self.env = env
-
-        for i in self.states:
-            current_coord = list(i.coord)
-            candidates = [np.array(current_coord), np.add(current_coord,[0,1]), np.add(current_coord,[0,-1]), 
-                          np.add(current_coord,[1,0]), np.add(current_coord,[-1,0])]
-            candidates = [np.ravel_multi_index(c, env.shape[:-1]) for c in candidates if c[0]>=0 and c[1]>=0 and c[0]<env.shape[0] and c[1]<env.shape[1]]
-            for c in candidates:
-                self._add_transition(i, region_list[c], 1)
         
-    # def add_states(self,new):
-    #     self.states.add(new)
-    #     if new not in self.transition.keys():
-    #         self.transition[new] = {}
-    #         self.transition[new][new] = 0
-    #     else:
-    #         raise AttributeError('This node is already in states')
+    def add_states(self,new):
+        self.states.add(new)
+        if new not in self.transition.keys():
+            self.transition[new] = {}
+            self.transition[new][new] = 0
+        else:
+            raise AttributeError('This node is already in states')
 
+    def update_state(self, state):
+        
+        
     def add_initial(self,new):
         self.initial.add(new)
 
@@ -110,6 +93,15 @@ class wFTS(object):
         while len(self.initial) > 0:
             self.initial.pop()
         self.initial.add(new)
+        
+    def add_transition(self,state1,state2,w=0,symmetric=True):
+        if state1 not in self.transition.keys():
+            self.transition[state1] = {}
+        if state2 not in self.transition.keys():
+            self.transition[state2] = {}
+        self.transition[state1][state2] = w
+        if symmetric == True:
+            self.transition[state2][state1] = w
         
     def change_weight(self,state1,state2,w,symmetric=True):
         self.transition[state1][state2] = w
