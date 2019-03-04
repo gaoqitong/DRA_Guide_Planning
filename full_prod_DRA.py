@@ -4,6 +4,7 @@ from networkx import dijkstra_path
 from Visualize import plot_buchi
 import os
 import sys
+import numpy as np
 
 def find_ampersand(input_str):
     index = []

@@ -34,9 +34,9 @@ class Prod_Planning(object):
             coord = np.unravel_index(i, (self.env.shape[0],self.env.shape[1]))
             if len(self.env.dynamic_coord_dict[coord]) >0:
                 # region_list[i] = Region(coord, [ap.lower() for ap in env.dynamic_coord_dict[coord]], region_list[i])
-                region_list[i] = Region(coord, [ap for ap in self.env.dynamic_coord_dict[coord]], self.region_list[i])
+                self.region_list[i] = Region(coord, [ap for ap in self.env.dynamic_coord_dict[coord]], self.region_list[i])
             else:
-                region_list[i] = Region(coord, [], self.region_list[i])
+                self.region_list[i] = Region(coord, [], self.region_list[i])
                 
         self.wfts = wFTS(self.region_list, self.env, {}, set())
         # for i in region_list:
@@ -60,13 +60,13 @@ class Prod_Planning(object):
             coord = np.unravel_index(i, (self.env.shape[0],self.env.shape[1]))
             if len(self.env.dynamic_coord_dict[coord]) >0:
                 # region_list[i] = Region(coord, [ap.lower() for ap in env.dynamic_coord_dict[coord]], region_list[i])
-                region_list[i] = Region(coord, [ap for ap in self.env.dynamic_coord_dict[coord]], self.region_list[i])
+                self.region_list[i] = Region(coord, [ap for ap in self.env.dynamic_coord_dict[coord]], self.region_list[i])
             else:
-                region_list[i] = Region(coord, [], self.region_list[i])
+                self.region_list[i] = Region(coord, [], self.region_list[i])
                 
         self.wfts = wFTS(self.region_list, self.env, {}, set())
 
-        wfts.replace_initial(self.region_list[np.ravel_multi_index(self.env.start_coord, self.env.shape[:-1])])
+        self.wfts.replace_initial(self.region_list[np.ravel_multi_index(self.env.start_coord, self.env.shape[:-1])])
         
     def update_wfts_ap(self):
         last_coord_dict_extra = set((k,tuple(v)) for k,v in self.env.last_dynamic_coord_dict.items()) - set((k,tuple(v)) for k,v in self.env.dynamic_coord_dict.items())
@@ -133,7 +133,7 @@ class Prod_Planning(object):
 #         print "opt_rabin: ", self.opt_rabin
 #         print "Current_Rabin: ", current_rabin
         current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
-        if current_idx < len(opt_rabin):
+        if current_idx < len(self.opt_rabin):
             next_rabin = str(self.opt_rabin[current_idx+1])
         else:
             next_rabin = str(self.opt_rabin[current_idx])
