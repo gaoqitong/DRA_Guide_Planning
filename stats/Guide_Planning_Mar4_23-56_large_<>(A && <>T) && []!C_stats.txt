@@ -76,3 +76,9 @@
 | Reward: -5000 | Episode: 75 | Qmax: 50.965635175456505 | Exploration: 0.2 | Step: 499 | LR:0.0015
 | Reward: -5090 | Episode: 76 | Qmax: 49.409572811547164 | Exploration: 0.2 | Step: 499 | LR:0.0015
 | Reward: -5360 | Episode: 77 | Qmax: 47.89693886292483 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -5000 | Episode: 78 | Qmax: 46.095450036272496 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -6710 | Episode: 79 | Qmax: 47.5467312799427 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -5000 | Episode: 80 | Qmax: 45.900568237763366 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -5000 | Episode: 81 | Qmax: 42.55282468929558 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -5000 | Episode: 82 | Qmax: 40.65968240955789 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -5000 | Episode: 83 | Qmax: 38.30631426962201 | Exploration: 0.2 | Step: 499 | LR:0.0015
