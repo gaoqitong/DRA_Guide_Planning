@@ -99,15 +99,15 @@ class CurrentWorld(discrete.DiscreteEnv):
         return self.s
 
     def __init__(self, ltl):
-        self.start_coord = (4, 1)
-        self.terminal_coord = (8, 8)
-        self.shape = (10, 10)
+        self.start_coord = (9, 5)
+        # self.terminal_coord = (8, 8)
+        self.shape = (25, 25)
 
         # prob_dict = {"A": 0.8, "B": 0.8, "C": 0.05, "T": 0.8}
-        prob_dict = {"A": {"A": 0.8, "B": 0.1, "C": 0.1}, "B": {"B": 0.8, "A": 0.1, "T":0.1}, "C": {"C": 0.9, "A":0.1}, "T": {"T": 0.8, "A": 0.1, "C":0.1} }
+        prob_dict = {"A": {"A": 0.8, "B": 0.1, "C": 0.1}, "B": {"B": 0.8, "A": 0.1, "T":0.1}, "C": {"C": 0.9, "A":0.1}, "D": {"D": 0.8, "B": 0.1, "T": 0.1}, "E": {"E": 0.8, "A": 0.1, "C": 0.1}, "T": {"T": 0.8, "A": 0.1, "C":0.1} }
         
-        ap_dict = {"A":[(2, 7)], "B":[(5, 2)], "C":[(i, i) for i in range(2, 7)]}
-        ap_dict["T"] = [self.terminal_coord]
+        ap_dict = {"A":[(11, 9),(9,13)], "B":[(7, 17),(13,18)], "C":[(i, i) for i in range(5, 12)]+[(i, 26-i) for i in range(5,12)]+[(26-i,26-i) for i in range(5,12)]+[(26-i,i) for i in range(5,12)], "D":[(19,10),(13,20)], "E":[(19,16),(7,13)], "T":[(16,13)]}
+        # ap_dict["T"] = [self.terminal_coord]
 
         static_coord_dict = defaultdict(lambda x: "")
 
