@@ -129,7 +129,8 @@ class CurrentWorld(discrete.DiscreteEnv):
                 
         #ltl = ltl + " && <>[] T"
         
-        self.rabin = Rabin_Automaton(ltl, self.dynamic_coord_dict)
+        self.rabin = Rabin_Automaton(ltl, self.static_coord_dict)
+        self.dynamic_rabin = Rabin_Automaton(ltl, self.dynamic_coord_dict)
         self.shape = (self.shape[0], self.shape[1], self.rabin.num_of_nodes)
         
         nS = np.prod(self.shape)
@@ -162,8 +163,8 @@ class CurrentWorld(discrete.DiscreteEnv):
         self.last_ap_dict = deepcopy(self.ap_dict)
         self.last_dynamic_coord_dict = deepcopy(self.dynamic_coord_dict)
         
-    def update_rabin(self, new_ltl):
-        self.rabin = Rabin_Automaton(new_ltl, self.dynamic_coord_dict)
+    def update_dynamic_rabin(self):
+        self.dynamic_rabin.coord_dict = self.dynamic_coord_dict
 
     def update_coord_dict(self):
         
