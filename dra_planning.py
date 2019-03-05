@@ -12,13 +12,13 @@ def convert_path_to_action(path):
     current_coord = path[0]
     next_coord = path[1]
     if current_coord[0] == next_coord[0] and current_coord[1]-1 == next_coord[1]:
-        return 0
-    if current_coord[0]+1 == next_coord[0] and current_coord[1] == next_coord[1]:
-        return 1
-    if current_coord[0] == next_coord[0] and current_coord[1]+1 == next_coord[1]:
-        return 2
-    if current_coord[0]-1 == next_coord[0] and current_coord[1] == next_coord[1]:
         return 3
+    if current_coord[0]+1 == next_coord[0] and current_coord[1] == next_coord[1]:
+        return 2
+    if current_coord[0] == next_coord[0] and current_coord[1]+1 == next_coord[1]:
+        return 1
+    if current_coord[0]-1 == next_coord[0] and current_coord[1] == next_coord[1]:
+        return 0
     if current_coord[0] == next_coord[0] and current_coord[1] == next_coord[1]:
         return 4
 
