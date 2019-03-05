@@ -71,11 +71,11 @@ class CurrentWorld(discrete.DiscreteEnv):
 
 
 
-        return [(1, new_state[0], reward_list[0], is_done[0])]
-#                  (0.05, new_state[1], reward_list[1], is_done[1]), 
-#                  (0.05, new_state[2], reward_list[2], is_done[2]), 
-#                  (0.05, new_state[3], reward_list[3], is_done[3]),
-#                  (0.05, new_state[4], reward_list[4], is_done[4])]
+        return [(1, new_state[0], reward_list[0], is_done[0]),
+                (0.05, new_state[1], reward_list[1], is_done[1]), 
+                (0.05, new_state[2], reward_list[2], is_done[2]), 
+                (0.05, new_state[3], reward_list[3], is_done[3]),
+                (0.05, new_state[4], reward_list[4], is_done[4])]
 
     def _reset(self):
     	self.s = categorical_sample(self.isd, self.np_random)
