@@ -52,8 +52,8 @@ class CurrentWorld(discrete.DiscreteEnv):
         new_state_3d = [tuple(new_positions[i] + [next_rabin_state[i]]) for i in range(len(new_positions))]
         new_state = [np.ravel_multi_index( i, self.shape) for i in new_state_3d]
         
-        # is_done = [i[-1] in self.rabin.accept for i in new_state_3d]
-        is_done = [False for i in new_state_3d]
+        is_done = [i[-1] in self.rabin.accept for i in new_state_3d]
+        # is_done = [False for i in new_state_3d]
 
         reward_list = []
 
