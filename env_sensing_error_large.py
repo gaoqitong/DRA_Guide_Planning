@@ -137,7 +137,7 @@ class CurrentWorld(discrete.DiscreteEnv):
         nA = 5
         
         self.start_state = tuple( list(self.start_coord) + [self.rabin.init_state] )
-        self.terminal_states = [tuple(list(self.terminal_coord) + [i]) for i in self.rabin.accept]        
+        # self.terminal_states = [tuple(list(self.terminal_coord) + [i]) for i in self.rabin.accept]        
         
         # Calculate transition probabilities
         P = {}
