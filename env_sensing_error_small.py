@@ -71,11 +71,11 @@ class CurrentWorld(discrete.DiscreteEnv):
 
 
 
-        return [(1, new_state[0], reward_list[0], is_done[0])] 
-                # (0.05, new_state[1], reward_list[1], is_done[1]), 
-                # (0.05, new_state[2], reward_list[2], is_done[2]), 
-                # (0.05, new_state[3], reward_list[3], is_done[3]),
-                # (0.05, new_state[4], reward_list[4], is_done[4])]
+        return [(0.8, new_state[0], reward_list[0], is_done[0]),
+                 (0.05, new_state[1], reward_list[1], is_done[1]), 
+                 (0.05, new_state[2], reward_list[2], is_done[2]), 
+                 (0.05, new_state[3], reward_list[3], is_done[3]),
+                 (0.05, new_state[4], reward_list[4], is_done[4])]
 
     def _reset(self):
     	self.s = categorical_sample(self.isd, self.np_random)
@@ -104,9 +104,9 @@ class CurrentWorld(discrete.DiscreteEnv):
         self.shape = (5, 5)
 
         # prob_dict = {"A": 0.8, "B": 0.8, "C": 0.05, "T": 0.8}
-        prob_dict = {"A": {"A": 0.8, "B": 0.1, "C": 0.1}, "B": {"B": 0.8, "A": 0.1, "T":0.1}, "C": {"C": 0.9, "A":0.1}, "T": {"T": 0.8, "A": 0.1, "C":0.1} }
+        prob_dict = {"A": {"A": 0.8, "B": 0.1, "C": 0.1}, "B": {"B": 0.8, "A": 0.1, "T":0.1}, "C": {"C": 0.9, "B":0.1}, "T": {"T": 0.8, "A": 0.1, "C":0.1} }
         
-        ap_dict = {"A":[(4, 0)], "B":[(0, 4)], "C":[(0, 0), (1, 2), (1, 3), (4, 2)]}
+        ap_dict = {"A":[(4, 0)], "B":[(0, 4)], "C":[(1, 3), (4, 2)]}
         ap_dict["T"] = [self.terminal_coord]
 
         static_coord_dict = defaultdict(lambda x: "")
