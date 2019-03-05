@@ -74,3 +74,5 @@
 | Reward: -5000 | Episode: 73 | Qmax: 51.919074270672695 | Exploration: 0.2 | Step: 499 | LR:0.0015
 | Reward: -5540 | Episode: 74 | Qmax: 51.26875688556679 | Exploration: 0.2 | Step: 499 | LR:0.0015
 | Reward: -5000 | Episode: 75 | Qmax: 50.965635175456505 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -5090 | Episode: 76 | Qmax: 49.409572811547164 | Exploration: 0.2 | Step: 499 | LR:0.0015
+| Reward: -5360 | Episode: 77 | Qmax: 47.89693886292483 | Exploration: 0.2 | Step: 499 | LR:0.0015

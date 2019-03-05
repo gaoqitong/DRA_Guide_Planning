@@ -163,7 +163,7 @@ class CurrentWorld(discrete.DiscreteEnv):
         self.last_ap_dict = deepcopy(self.ap_dict)
         self.last_dynamic_coord_dict = deepcopy(self.dynamic_coord_dict)
         
-    def update_rabin(self, new_ltl):
+    def update_dynamic_rabin(self):
         self.dynamic_rabin.coord_dict = self.dynamic_coord_dict
 
     def update_coord_dict(self):
