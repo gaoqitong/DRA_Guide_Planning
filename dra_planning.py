@@ -95,7 +95,7 @@ class Prod_Planning(object):
 #         self.region_list = self.update_wfts_ap()
         self.wfts.replace_initial(self.region_list[np.ravel_multi_index(self.env.start_coord, self.env.shape[:-1])])
         
-        rabin = self.env.rabin
+        rabin = self.env.dynamic_rabin
         
         full_prod = FullProd(self.wfts, rabin)
         self.full_prod = full_prod
