@@ -107,3 +107,9 @@
 | Reward: -5031 | Episode: 106 | Qmax: 199.8744003599053 | Exploration: 0.104345912226 | Step: 604 | LR:0.0015
 | Reward: -4713 | Episode: 107 | Qmax: 199.78520808348784 | Exploration: 0.103511144928 | Step: 592 | LR:0.0015
 | Reward: -6382 | Episode: 108 | Qmax: 202.0265259613862 | Exploration: 0.103511144928 | Step: 999 | LR:0.0015
+| Reward: -11710 | Episode: 109 | Qmax: 201.69784049491386 | Exploration: 0.103511144928 | Step: 999 | LR:0.0015
+| Reward: -5438 | Episode: 110 | Qmax: 202.41110457109482 | Exploration: 0.102683055769 | Step: 543 | LR:0.0015
+| Reward: -5934 | Episode: 111 | Qmax: 201.1929269897302 | Exploration: 0.101861591322 | Step: 769 | LR:0.0015
+| Reward: -7495 | Episode: 112 | Qmax: 200.67691158850545 | Exploration: 0.101046698592 | Step: 899 | LR:0.0015
+| Reward: -4857 | Episode: 113 | Qmax: 201.41815457157736 | Exploration: 0.100238325003 | Step: 691 | LR:0.0015
+| Reward: -9991 | Episode: 114 | Qmax: 201.4484074986852 | Exploration: 0.100238325003 | Step: 999 | LR:0.0015
