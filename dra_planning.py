@@ -132,7 +132,10 @@ class Prod_Planning(object):
         # current_rabin = str(current_rabin)
 #         print "opt_rabin: ", self.opt_rabin
 #         print "Current_Rabin: ", current_rabin
-        current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
+        if current_rabin in self.opt_rabin:
+            current_idx = np.where(np.array(self.opt_rabin) == current_rabin)[0][0]
+        else:
+            return None
         if current_idx < len(self.opt_rabin)-1:
             next_rabin = str(self.opt_rabin[current_idx+1])
         else:
@@ -145,25 +148,29 @@ class Prod_Planning(object):
     def get_local_opt(self, new_start_coord, new_ltl, dra_full_prod=None):
         opt_local_path = []
 
-        rabin = Rabin_Automaton(new_ltl, self.env.dynamic_coord_dict)
-        self.wfts.replace_initial(self.region_list[np.ravel_multi_index(new_start_coord, self.env.shape[:-1])])
-        
-        if dra_full_prod == None:
-            dra_full_prod = FullProd(self.wfts, rabin)
-            dra_full_prod.construct_fullproduct()
-            self.dra_full_prod = dra_full_prod
-        # count = 0
-        # for i in full_prod.states:
-        #     for j in full_prod.transition[i].keys():
-        #         if full_prod.transition[i][j] is not None:
-        #             count += 1 
-                    
-        # while len(opt_local_path) == 0:
-        try:
-            opt=search_opt_run(dra_full_prod)
-            opt_local_path = [tuple(list(opt[0][i][0].coord) + [opt[0][i][1]]) for i in range(len(opt[0]))]
-            return opt_local_path
-        except:
+        if new_ltl != None:
+            rabin = Rabin_Automaton(new_ltl, self.env.dynamic_coord_dict)
+            self.wfts.replace_initial(self.region_list[np.ravel_multi_index(new_start_coord, self.env.shape[:-1])])
+            
+            if dra_full_prod == None:
+                dra_full_prod = FullProd(self.wfts, rabin)
+                dra_full_prod.construct_fullproduct()
+                self.dra_full_prod = dra_full_prod
+            # count = 0
+            # for i in full_prod.states:
+            #     for j in full_prod.transition[i].keys():
+            #         if full_prod.transition[i][j] is not None:
+            #             count += 1 
+                        
+            # while len(opt_local_path) == 0:
+            try:
+                opt=search_opt_run(dra_full_prod)
+                opt_local_path = [tuple(list(opt[0][i][0].coord) + [opt[0][i][1]]) for i in range(len(opt[0]))]
+                return opt_local_path
+            except:
+                return None
+
+        else:
             return None
         # print 'Local Plan synthesized:'+str(opt_local_path)
         
